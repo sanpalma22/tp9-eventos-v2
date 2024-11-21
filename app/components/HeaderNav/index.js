@@ -1,24 +1,37 @@
-import Image from "next/image";
+'use client'
+import { useContext } from "react";
+import { TokenContext } from "../../context/token";  // Asegúrate de tener la ruta correcta
 import styles from "./headerNav.module.css";
 import Link from "next/link";
+import { useRouter } from "next/navigation";  // Para redirigir al usuario después de cerrar sesión
 
-export default function HeaderNav({ usuario }) {
+export default function HeaderNav() {
+  const { session, cleanSession, isLoggedIn } = useContext(TokenContext);
+  const router = useRouter();  // Para poder redirigir después de cerrar sesión
 
-  // usuario = { nombre: "carlos" }; 
+  const handleLogout = () => {
+
+    const confirmLogout = window.confirm("¿Estás seguro de que quieres cerrar sesión?");
+  
+    if (confirmLogout) {
+      cleanSession();  // Limpia el token de la sesión
+      router.push("/login");  // Redirige al usuario al login
+    }
+  };
 
   return (
     <header className={styles.header}>
       <nav className={styles.nav}>
-        <div className={styles.logo}>
-          <Link href="/"><Image src={'/logo.png'} alt="Logo del sitio" width={100} height={100} className={styles.logo}/></Link>
-        </div>
         <Link href="/">Home</Link>
         <Link href="/contacto">Contacto</Link>
       </nav>
-      {usuario ? (
+      {isLoggedIn ? (
         <div className={styles.userMenu}>
-          <span className={styles.userName}>{usuario.nombre}</span>
-          <button className={styles.logoutButton}>Cerrar sesión</button>
+          <img src="https://static.vecteezy.com/system/resources/thumbnails/019/879/198/small/user-icon-on-transparent-background-free-png.png" className={styles.logo}></img>
+          <span className={styles.userName}>{session.username}</span>
+          <button onClick={handleLogout} className={styles.logoutButton}>
+            Cerrar sesión
+          </button>
         </div>
       ) : (
         <Link href="/login" className={styles.loginButton}>

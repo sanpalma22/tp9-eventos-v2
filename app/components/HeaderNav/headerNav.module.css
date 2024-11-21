@@ -26,7 +26,8 @@
   }
   
   .userName {
-    margin-right: 10px;
+    margin-right: 40px;
+    font-weight: bolder;
   }
   
   .logoutButton {
@@ -42,9 +43,8 @@
     border-radius: 30px;
     color: #fff;
   }
-  
+
   .logo{
-    width: 100px;
-    height: auto;
+    height: 25px;
   }
   
