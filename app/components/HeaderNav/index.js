@@ -21,7 +21,7 @@ export default function HeaderNav({ usuario }) {
           <button className={styles.logoutButton}>Cerrar sesión</button>
         </div>
       ) : (
-        <Link href="/registro" className={styles.loginButton}>
+        <Link href="/login" className={styles.loginButton}>
           Iniciar sesión
         </Link>
       )}

@@ -2,6 +2,9 @@ import localFont from "next/font/local";
 import "./globals.css";
 import HeaderNav from "./components/HeaderNav"
 import Footer from "./components/Footer";
+import { TokenProvider } from "./context/token";
+
+
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -22,9 +25,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <HeaderNav ></HeaderNav>
-        {children}
-        <Footer></Footer>
+        <TokenProvider>
+          <HeaderNav></HeaderNav>
+          {children}
+          <Footer></Footer>
+        </TokenProvider>
       </body>
     </html>
   );
