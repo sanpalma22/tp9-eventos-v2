@@ -17,14 +17,14 @@ export default function Evento() {
 
     return(
             <div className={styles.container}>
-            <h1 className={styles.tituloEvento}>{evento.nombre}</h1>
+            <h1 className={styles.name}>{evento.nombre}</h1>
             <img src={evento.imagen} alt={evento.nombre} className={styles.imagenEvento} />
             
             <div className={styles.eventInfo}>
-            <p><strong>Descripción:</strong> {evento.descripcion}</p>
-            <p><strong>Fecha:</strong> {evento.fecha}</p>
-            <p><strong>Ubicación:</strong> {evento.ubicacion}</p>
-            <p><strong>Precio:</strong> {evento.precio}</p>
+            <p><strong>Descripción:</strong> {evento.description}</p>
+            <p><strong>Fecha:</strong> {evento.start_date}</p>
+            <p><strong>Ubicación:</strong> {evento.id_event_location}</p>
+            <p><strong>Precio:</strong> {evento.price}</p>
             <button className={styles.botonCompra}>Comprar Entradas</button>
             </div>
             </div>
