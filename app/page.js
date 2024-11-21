@@ -8,7 +8,7 @@ export default function Home() {
   const [ eventos, setEventos ] = useState([])
 
     useEffect(() => {
-        fetch("http://localhost:3000/api/event/")
+        fetch("http://localhost:4000/api/event/")
             .then((res) => res.json())  
             .then((data) => setEventos(data.collection));
     }, [])
