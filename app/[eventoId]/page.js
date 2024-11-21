@@ -1,33 +1,19 @@
 "use client";
 import Image from "next/image";
 import styles from "./evento.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 
 export default function Evento() {
-    const [evento, setEvento] = useState({
-    nombre: "Partido de Racing",
-      imagen: "https://media-cdn.tripadvisor.com/media/photo-s/0d/34/e2/b7/espectaculo-unico.jpg",
-      fecha: "2024-02-21",
-    });
-    const params = useParams()
-  
-    // useEffect(() => {
-    //   async function fetchEvento() {
-    //     try {
-    //       const response = await fetch(`http://localhost:5000/${params.eventoId}`);
-    //       if (!response.ok) {
-    //         throw new Error("Error al obtener los datos");
-    //       }
-    //       const data = await response.json();
-    //       setEvento(data[0]);
-    //     } catch (error) {
-    //       console.error("Error al obtener el evento:", error);
-    //     }
-    //   }
-  
-    //   fetchEvento();
-    // }, [evento]);
+  const {id} = useParams()
+  const [evento, setEvento] = useState({});
+    useEffect(() => {
+      fetch(`http://localhost:3000/api/event/${id}`)
+          .then((res) => res.json())  
+          .then((data) => setEvento(data));
+  }, [id,evento])
+
+    
 
     return(
             <div className={styles.container}>

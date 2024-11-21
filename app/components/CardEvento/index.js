@@ -6,9 +6,9 @@ export default function CardEvento({ evento }) {
       <div>
        <img src={evento.imagen} className={styles.imagen}></img>
       </div>
-      <p className={styles.nombreEvento}>{evento.nombre}</p>
-      <p className={styles.fechaEvento}>{evento.fecha}</p>
-      <Link href={"/1"} className={styles.btnInfo}>Ver info</Link>
+      <p className={styles.nombreEvento}>{evento.name}</p>
+      <p className={styles.fechaEvento}>{evento.start_date.split("T")[0]}</p>
+      <Link href={`/${evento.id}`} className={styles.btnInfo}>Ver info</Link>
     </div>
   );
 }
