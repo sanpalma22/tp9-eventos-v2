@@ -1,9 +1,9 @@
 import localFont from "next/font/local";
 import "./globals.css";
-import HeaderNav from "./components/HeaderNav"
+import HeaderNav from "./components/HeaderNav";
 import Footer from "./components/Footer";
 import { TokenProvider } from "./context/token";
-
+import { RutasProtegidas } from "./context/RutasProtegidas";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -25,11 +25,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <TokenProvider>
-          <HeaderNav></HeaderNav>
-          {children}
-          <Footer></Footer>
-        </TokenProvider>
+        {/* <RutasProtegidas> */}
+          <TokenProvider>
+            <HeaderNav></HeaderNav>
+            {children}
+            <Footer></Footer>
+          </TokenProvider>
+        {/* </RutasProtegidas> */}
       </body>
     </html>
   );

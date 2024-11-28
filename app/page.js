@@ -12,6 +12,7 @@ export default function Home() {
             .then((res) => res.json())  
             .then((data) => setEventos(data.collection));
     }, [])
+    console.log(eventos)
 
   return (
     <>
